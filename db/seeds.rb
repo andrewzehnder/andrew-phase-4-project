@@ -13,14 +13,14 @@ puts "🌱 Seeding spices..."
 # Make 2 users
 # John Doe
 1.times do
-    user = User.create(name: "John Doe", username: "john-doe", password_digest: BCrypt::Password.create('Password1'))
+    user = User.create(name: "John Doe 2", username: "john-doe", password_digest: BCrypt::Password.create('Password1'))
 
-    # 1.times do
-    #     city = City.create(
-    #         name: Faker::Address.city,
-    #         country: Faker::Address.country,
-    #         population: Faker::Number.number(digits: 7)
-    #     )
+    1.times do
+        city = City.create(
+            name: Faker::Address.city,
+            country: Faker::Address.country,
+            population: Faker::Number.number(digits: 7)
+        )
         
     #         landmark = Landmark.create(
     #             user_id = user.id,
@@ -29,7 +29,7 @@ puts "🌱 Seeding spices..."
     #             description: "This is the most beautiful mountain ever!",
     #             image_URL: "https://th.bing.com/th/id/OIP.x_B30dSus6CmS4ak4BAFxwHaEK?pid=ImgDet&rs=1"
     #         )
-    # end
+    end
 
     # 1.times do
     #     city = City.create(
