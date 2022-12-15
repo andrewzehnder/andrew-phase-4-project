@@ -8,7 +8,7 @@
 require 'faker'
 require 'bcrypt'
 
-puts "🌱 Seeding spices..."
+puts "🌱 Seeding..."
 
 # Make 2 users
 # John Doe
