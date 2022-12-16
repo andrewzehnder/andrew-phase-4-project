@@ -10,6 +10,11 @@ require 'bcrypt'
 
 puts "🌱 Seeding..."
 
+# Removing all existing data
+User.destroy_all
+City.destroy_all
+Landmark.destroy_all
+
 # Make 2 users
 # John Doe
 1.times do
