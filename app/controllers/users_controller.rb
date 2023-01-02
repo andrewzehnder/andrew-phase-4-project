@@ -23,10 +23,10 @@ class UsersController < ApplicationController
     end
 
     def render_unprocessable_entity(invalid)
-        render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
     end
 
     def render_not_found
-        render json: { errors: "Not Found." }, status: :unauthorized
+      render json: { errors: "Not Found." }, status: :unauthorized
     end
 end
