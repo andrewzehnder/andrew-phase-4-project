@@ -4,7 +4,7 @@ const Home = ({}) => {
 
     return (
       <form>
-        <h2>Cities List</h2>
+        <h2>Home</h2>
       </form>
     )
 }
