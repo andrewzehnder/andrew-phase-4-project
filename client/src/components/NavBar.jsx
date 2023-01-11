@@ -26,7 +26,10 @@ const NavBar = ({ user }) => {
             Phase 4 Project
           </Typography>
           <Button color="inherit" component={ Link } to="/">Home</Button>
-          { user ? <Button color="inherit">Logout</Button> : <Button color="inherit">Login</Button> }
+          { user ? 
+            <Button color="inherit" component={ Link } to="/" >Logout</Button> : 
+            <Button color="inherit" component={ Link } to="/login">Login</Button>
+          }
         </Toolbar>
       </AppBar>
     </Box>
