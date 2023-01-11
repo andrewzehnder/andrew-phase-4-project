@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -26,6 +26,7 @@ const NavBar = () => {
             Phase 4 Project
           </Typography>
           <Button color="inherit" component={ Link } to="/">Home</Button>
+          { user ? <Button color="inherit">Logout</Button> : <Button color="inherit">Login</Button> }
         </Toolbar>
       </AppBar>
     </Box>

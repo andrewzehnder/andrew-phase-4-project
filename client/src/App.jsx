@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import NavBar from './components/NavBar';
@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
 
-  // const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
   // useEffect(() => {
   //   fetch("/me").then((response) => {
@@ -15,14 +15,12 @@ function App() {
   //     }
   //   });
   // }, []);
-
-  // if (!user) return <Login onLogin={setUser} />;
  
   return (
     <Router>
-        <NavBar />
+        <NavBar user={user} />
         <Routes>
-          <Route path="/" element={<Home/> } />
+          <Route path="/" element={<Home /> } />
         </Routes>
      </Router>
   );
