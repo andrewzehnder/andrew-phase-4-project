@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
   // useEffect(() => {
   //   fetch("/me").then((response) => {
@@ -16,7 +16,7 @@ function App() {
   //   });
   // }, []);
 
-  if (!user) return <Login onLogin={setUser} />;
+  // if (!user) return <Login onLogin={setUser} />;
  
   return (
     <Router>
