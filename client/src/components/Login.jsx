@@ -1,11 +1,22 @@
-//Add the ability for someone to login
-//Add the ability for someone to click a button to link out to a new page to sign up to create a new user
-
-import React from 'react'
+import React, { useState } from 'react'
+import LoginForm from './LoginForm';
+import SignUp from './SignUp';
 
 function LogIn() {
+    const [showLoginForm, setShowLoginForm] = useState(true);
+
   return (
-    <div>LogIn</div>
+    <div>
+        LogIn
+
+        {showLoginForm ? (
+        <LoginForm />
+        ) : (
+        <SignUp />
+        )
+        }
+
+    </div>
   )
 }
 
