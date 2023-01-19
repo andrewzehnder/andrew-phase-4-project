@@ -22,7 +22,7 @@ function App() {
         <NavBar user={user} />
         <Routes>
           <Route path="/" element={<Home /> } />
-          <Route path="/login" element={<LogIn /> } />
+          <Route path="/login" element={<LogIn onLogin={ setUser } /> } />
         </Routes>
      </Router>
   );
