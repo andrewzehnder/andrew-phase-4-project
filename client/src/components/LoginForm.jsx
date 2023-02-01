@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 
-const LoginForm = ({ }) => {
+const LoginForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -23,7 +23,7 @@ const LoginForm = ({ }) => {
             resp.json().then((user) => console.log(user))
         } 
         else {
-            resp.json().then((error) => console.log(error.errors));
+            resp.json().then((error) => setErrors(error.error));
         }
        })
     }
@@ -53,11 +53,10 @@ const LoginForm = ({ }) => {
     <div>
       <Button type="submit" variant="outlined">Login</Button>
     </div>
-    {/* <div>
-        {errors.map((error) => (
-            <Alert severity="error" key={error}>{error}</Alert>
-        ))}
-    </div> */}
+    {/* Why is this always showing? */}
+    {errors ?
+      <Alert severity="error" key={errors}>{errors}</Alert>
+    : null }
     </form>
 )
 
