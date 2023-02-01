@@ -8,7 +8,15 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 
 
-const NavBar = ({ user }) => {
+const NavBar = ({ user, setUser }) => {
+
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
+      }
+    });
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -27,7 +35,7 @@ const NavBar = ({ user }) => {
           </Typography>
           <Button color="inherit" component={ Link } to="/">Home</Button>
           { user ? 
-            <Button color="inherit" component={ Link } to="/" >Logout</Button> : 
+            <Button color="inherit" component={ Link } to="/" onClick={handleLogoutClick} >Logout</Button> : 
             <Button color="inherit" component={ Link } to="/login">Login</Button>
           }
         </Toolbar>
