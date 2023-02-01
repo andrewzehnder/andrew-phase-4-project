@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 
-const LoginForm = () => {
+const LoginForm = ({ setUser }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -23,13 +23,20 @@ const LoginForm = () => {
             resp.json().then((user) => console.log(user))
         } 
         else {
-            resp.json().then((error) => setErrors(error.error));
+            resp.json().then((error) => setErrors(error.errors));
         }
        })
     }
  
    return (
     <form onSubmit={handleSubmit}>
+
+    {/* Why is this always showing? */}
+    {errors ?
+      <Alert severity="error" key={errors}>{errors}</Alert>
+      : null 
+    }
+
     <div>
       <TextField
         required
@@ -53,10 +60,6 @@ const LoginForm = () => {
     <div>
       <Button type="submit" variant="outlined">Login</Button>
     </div>
-    {/* Why is this always showing? */}
-    {errors ?
-      <Alert severity="error" key={errors}>{errors}</Alert>
-    : null }
     </form>
 )
 

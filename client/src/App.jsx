@@ -17,10 +17,10 @@ function App() {
  
   return (
     <Router>
-        <NavBar user={user} setUser={setUser} />
+        <NavBar user={user} setUser={ setUser } />
         <Routes>
           <Route path="/" element={<Home /> } />
-          <Route path="/login" element={<LogIn onLogin={ setUser } /> } />
+          <Route path="/login" element={<LogIn setUser={ setUser } /> } />
         </Routes>
      </Router>
   );

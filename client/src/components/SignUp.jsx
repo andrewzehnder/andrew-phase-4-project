@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Alert from '@mui/material/Alert';
 
-const SignUp = () => {
+const SignUp = ({ setUser }) => {
 
     const [newUser, setNewUser] = useState({
       name: "",
@@ -12,8 +13,9 @@ const SignUp = () => {
       password: "",
       password_confirmation: ""
    })
+   const [errors, setErrors] = useState([]);
 
-  //  const navigate = useNavigate(0);
+   const navigate = useNavigate(0);
 
    const handleSubmit = e => {
      e.preventDefault();
@@ -24,9 +26,18 @@ const SignUp = () => {
              "Content-Type": "application/json"
          },
          body: JSON.stringify(newUser)
+     }).then ((resp) => {
+      if (resp.ok) {
+          resp.json().then(newUser => { 
+            setUser(newUser);
+            console.log(newUser)
+            navigate ('/');
+          })
+        }
+      else {
+          resp.json().then((error) => setErrors(error.errors));
+      }
      })
-     .then(resp => resp.json())
-     .then(newUser => console.log(newUser));
  }
 
  const handleChange = e => {
@@ -37,8 +48,14 @@ const SignUp = () => {
  }
 
  return (
-
    <div>
+
+    {/* Why is this always showing? */}
+    {errors ?
+      <Alert severity="error" key={errors}>{errors}</Alert>
+      : null
+    }
+
      <h1>Create a New User</h1>
 
        <Box
@@ -52,7 +69,7 @@ const SignUp = () => {
      <div>
        <TextField
          required
-         id="Name"
+         id="name"
          label="Name:"
          type="text"
          name="name"
@@ -100,6 +117,7 @@ const SignUp = () => {
        </Box>
 
        <Button input type="submit" variant="outlined" onClick={handleSubmit} >Save</Button>
+
    </div>
 
  )}

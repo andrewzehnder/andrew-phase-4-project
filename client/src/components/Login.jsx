@@ -2,18 +2,16 @@ import React, { useState } from 'react'
 import LoginForm from './LoginForm';
 import SignUp from './SignUp';
 
-function LogIn({ onLogin }) {
+function LogIn({ setUser }) {
   const [showLoginForm, setShowLoginForm] = useState(false);
-  console.log(onLogin)
 
   return (
     <div>
-        LogIn
 
         {showLoginForm ? (
-        <LoginForm />
+        <LoginForm setUser={ setUser }  />
         ) : (
-        <SignUp />
+        <SignUp setUser={ setUser } />
         )
         }
 
