@@ -7,7 +7,7 @@ import LogIn from './components/Login';
 
 function App() {
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     fetch("/me")
