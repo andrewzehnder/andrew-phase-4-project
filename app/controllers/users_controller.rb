@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
+    def index
+      user = User.all.order(:id)
+      render json: user
+    end
+  
     def create
       user = User.create(user_params)
       if user.valid?

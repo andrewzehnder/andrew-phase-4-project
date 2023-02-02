@@ -1,13 +1,16 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
 
 const LoginForm = ({ setUser }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
- 
+
+    const navigate = useNavigate(0);
  
     const handleSubmit = e => {
        e.preventDefault();
@@ -20,7 +23,11 @@ const LoginForm = ({ setUser }) => {
            body: JSON.stringify({ username, password }),
        }).then ((resp) => {
         if (resp.ok) {
-            resp.json().then((user) => console.log(user))
+            resp.json().then(user => {
+              setUser(user);
+              console.log(user);
+              navigate ('/');
+            })
         } 
         else {
             resp.json().then((error) => setErrors(error.errors));
@@ -29,13 +36,23 @@ const LoginForm = ({ setUser }) => {
     }
  
    return (
-    <form onSubmit={handleSubmit}>
-
+    <div>
     {/* Why is this always showing? */}
     {errors ?
       <Alert severity="error" key={errors}>{errors}</Alert>
       : null 
     }
+
+     <h1>Login with an Existing Account</h1>
+
+       <Box
+           component="form"
+           sx={{
+               '& .MuiTextField-root': { m: 1, width: '25ch' },
+           }}
+           noValidate
+           autoComplete="off"
+       ></Box>
 
     <div>
       <TextField
@@ -58,11 +75,12 @@ const LoginForm = ({ setUser }) => {
       />
     </div>
     <div>
-      <Button type="submit" variant="outlined">Login</Button>
+      <Button type="submit" variant="outlined" onClick={handleSubmit}>Login</Button>
     </div>
-    </form>
-)
 
+    </div>
+
+)
 }
 
 export default LoginForm;
