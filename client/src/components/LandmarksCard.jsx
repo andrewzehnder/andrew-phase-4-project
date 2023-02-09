@@ -10,11 +10,11 @@ import CardMedia from '@mui/material/CardMedia';
 const LandmarksCard = ( { landmark, user } ) => {
 
     const[landmarkCard, setLandmarkCard] = useState({
-        user_id: "",
-        city_id: "",
-        name: "",
-        description: "",
-        image_url: ""
+        user_id: landmark.user_id,
+        city_id: landmark.city_id,
+        name: landmark.name,
+        description:landmark.description,
+        image_url: landmark.image_url
     })
     const [errors, setErrors] = useState([]);
     const landmark_id_int = parseInt(landmark.id);
@@ -40,6 +40,13 @@ const LandmarksCard = ( { landmark, user } ) => {
         })
     }
 
+    const handleChange = e => {
+        setLandmarkCard({
+            ...landmarkCard, 
+            [e.target.name]: e.target.value
+        })
+    }
+
     const card = (
         <React.Fragment>
           <CardMedia
@@ -54,7 +61,7 @@ const LandmarksCard = ( { landmark, user } ) => {
             type="text"
             id="name"
             defaultValue={landmark.name}
-            onChange={(e) => setLandmarkCard(e.target.value)}
+            onChange={ handleChange }
            />
             <TextField
             multiline
@@ -62,7 +69,7 @@ const LandmarksCard = ( { landmark, user } ) => {
             type="text"
             id="name"
             defaultValue={landmark.description}
-            onChange={(e) => setLandmarkCard(e.target.value)}
+            onChange={ handleChange }
            />
           </CardContent>
 

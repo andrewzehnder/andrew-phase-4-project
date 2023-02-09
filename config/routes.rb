@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   
-  resources :landmarks, only: [:index, :create, :update]
+  resources :landmarks, only: [:index, :create, :update, :show]
 
 end

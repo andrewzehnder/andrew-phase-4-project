@@ -16,6 +16,11 @@ class LandmarksController < ApplicationController
         end
     end
 
+    def show
+        landmark = Landmark.find(params[:id])
+        render json: landmark
+    end
+
     def update
         landmark = Landmark.find(params[:id])
         byebug
