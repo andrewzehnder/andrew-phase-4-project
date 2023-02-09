@@ -36,7 +36,7 @@ const NavBar = ({ user, setUser }) => {
           <Button color="inherit" component={ Link } to="/">Home</Button>
           <Button color="inherit" component={ Link } to="/landmarks">Landmarks</Button>
           { user ? 
-            <Button color="inherit" component={ Link } to="/" onClick={handleLogoutClick} >Logout</Button> : 
+            <Button color="inherit" onClick={handleLogoutClick} >Logout</Button> : 
             <Button color="inherit" component={ Link } to="/login">Login</Button>
           }
         </Toolbar>

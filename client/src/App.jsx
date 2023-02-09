@@ -18,11 +18,11 @@ function App() {
  
   return (
     <Router>
-        <NavBar user={user} setUser={ setUser } />
+        <NavBar user={ user } setUser={ setUser } />
         <Routes>
           <Route path="/" element={<Home /> } />
           <Route path="/login" element={<LogIn setUser={ setUser } /> } />
-          <Route path="/landmarks" element={<Landmarks /> }/>
+          <Route path="/landmarks" element={<Landmarks user={ user }/> } />
         </Routes>
      </Router>
   );
