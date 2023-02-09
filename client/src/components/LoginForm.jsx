@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 
-const LoginForm = ({ setUser }) => {
+const LoginForm = ({ setUser, setShowLoginForm }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState([]);
@@ -30,15 +30,22 @@ const LoginForm = ({ setUser }) => {
             })
         } 
         else {
-            resp.json().then((error) => setErrors(error.errors));
+            resp.json().then(error => {
+              setErrors(error.error);
+              console.log(error.error);
+            });
         }
        })
+    }
+
+    const handleSignUp = e => {
+      setShowLoginForm(false);
+      navigate ('/login');
     }
  
    return (
     <div>
-    {/* Why is this always showing? */}
-    {errors ?
+    {errors.length ?
       <Alert severity="error" key={errors}>{errors}</Alert>
       : null 
     }
@@ -52,8 +59,7 @@ const LoginForm = ({ setUser }) => {
            }}
            noValidate
            autoComplete="off"
-       ></Box>
-
+       >
     <div>
       <TextField
         required
@@ -74,12 +80,19 @@ const LoginForm = ({ setUser }) => {
         onChange={(e) => setPassword(e.target.value)}
       />
     </div>
+
+    </Box>
+
     <div>
-      <Button type="submit" variant="outlined" onClick={handleSubmit}>Login</Button>
+      <Button type="submit" variant="outlined" onClick={ handleSubmit }>Login</Button>
     </div>
 
+    <h3>Don't have an account? Sign up here</h3>
+    <div>
+      <Button type="submit" variant="outlined" onClick={ handleSignUp }>Signup</Button>
     </div>
-
+    
+    </div>
 )
 }
 

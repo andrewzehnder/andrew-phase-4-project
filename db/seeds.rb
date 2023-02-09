@@ -69,7 +69,7 @@ end
                 city_id: city.id,
                 name: "Statue of Rock",
                 description: "This is the most beautiful statue ever!",
-                image_url: "https://th.bing.com/th/id/R.dd59568467bd15189811b2081a7c10c9?rik=VUuMMx6EM4JgAg&pid=ImgRaw&r=0"
+                image_url: "https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/rock-sculptures-at-sunset-moment-of-perception.jpg"
             )
     end
 
@@ -85,7 +85,7 @@ end
                 city_id: city.id,
                 name: "Statue of Honor",
                 description: "This is the second most beautiful statue ever!",
-                image_url: "https://th.bing.com/th/id/R.65d0f5dc351932340d1219b6a0d6235e?rik=XqhDaIHWpYyhVg&riu=http%3a%2f%2fwww.eutouring.com%2fstatues_in_paris_k15_DSC03128_lrg.jpg&ehk=TUHj5x5WNYrlPKvrlnUFD0XzALLDnpVZIfL8HNxWwqA%3d&risl=&pid=ImgRaw&r=0"
+                image_url: "https://weburbanist.com/wp-content/uploads/2008/06/memorial-monument-dedicated-heros-300x300.jpg"
             )
     end
 

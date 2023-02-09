@@ -11,8 +11,8 @@ import IconButton from '@mui/material/IconButton';
 const NavBar = ({ user, setUser }) => {
 
   function handleLogoutClick() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
+    fetch("/logout", { method: "DELETE" }).then((resp) => {
+      if (resp.ok) {
         setUser(null);
       }
     });
@@ -34,6 +34,7 @@ const NavBar = ({ user, setUser }) => {
             Phase 4 Project
           </Typography>
           <Button color="inherit" component={ Link } to="/">Home</Button>
+          <Button color="inherit" component={ Link } to="/landmarks">Landmarks</Button>
           { user ? 
             <Button color="inherit" component={ Link } to="/" onClick={handleLogoutClick} >Logout</Button> : 
             <Button color="inherit" component={ Link } to="/login">Login</Button>

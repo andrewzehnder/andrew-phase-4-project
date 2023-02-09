@@ -4,6 +4,7 @@ import Home from './components/Home';
 import NavBar from './components/NavBar';
 import './App.css';
 import LogIn from './components/Login';
+import Landmarks from './components/Landmarks';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home /> } />
           <Route path="/login" element={<LogIn setUser={ setUser } /> } />
+          <Route path="/landmarks" element={<Landmarks /> }/>
         </Routes>
      </Router>
   );

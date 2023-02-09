@@ -9,9 +9,9 @@ function LogIn({ setUser }) {
     <div>
 
         {showLoginForm ? (
-        <LoginForm setUser={ setUser }  />
+        <LoginForm setUser={ setUser } setShowLoginForm={ setShowLoginForm } />
         ) : (
-        <SignUp setUser={ setUser } />
+        <SignUp setUser={ setUser } setShowLoginForm={ setShowLoginForm } />
         )
         }
 

@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 
-const SignUp = ({ setUser }) => {
+const SignUp = ({ setUser, setShowLoginForm }) => {
 
     const [newUser, setNewUser] = useState({
       name: "",
@@ -47,11 +47,15 @@ const SignUp = ({ setUser }) => {
    })
  }
 
+ const handleLogin = e => {
+  setShowLoginForm(true);
+  navigate ('/login');
+}
+
  return (
    <div>
 
-    {/* Why is this always showing? */}
-    {errors ?
+    {errors.length ?
       <Alert severity="error" key={errors}>{errors}</Alert>
       : null
     }
@@ -117,6 +121,11 @@ const SignUp = ({ setUser }) => {
        </Box>
 
        <Button input type="submit" variant="outlined" onClick={handleSubmit} >Save</Button>
+
+    <h3>Already have an account? Login here</h3>
+    <div>
+      <Button type="submit" variant="outlined" onClick={ handleLogin }>Login</Button>
+    </div>
 
    </div>
 
