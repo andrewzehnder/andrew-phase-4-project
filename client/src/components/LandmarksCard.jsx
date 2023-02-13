@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -10,14 +10,22 @@ import CardMedia from '@mui/material/CardMedia';
 const LandmarksCard = ( { landmark, user } ) => {
 
     const[landmarkCard, setLandmarkCard] = useState({
-        user_id: landmark.user_id,
-        city_id: landmark.city_id,
-        name: landmark.name,
-        description:landmark.description,
-        image_url: landmark.image_url
+        user_id: "",
+        city_id: "",
+        name: "",
+        description:"",
+        image_url: ""
     })
     const [errors, setErrors] = useState([]);
     const landmark_id_int = parseInt(landmark.id);
+
+    console.log(landmarkCard)
+
+    useEffect(() => {
+        fetch(`/landmarks/${landmark_id_int}`)
+        .then ((resp) => resp.json())
+        .then ((item) => setLandmarkCard(item))
+      }, []);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -67,7 +75,7 @@ const LandmarksCard = ( { landmark, user } ) => {
             multiline
             label="Landmark Name"
             type="text"
-            id="name"
+            id="description"
             defaultValue={landmark.description}
             onChange={ handleChange }
            />
@@ -97,19 +105,17 @@ const LandmarksCard = ( { landmark, user } ) => {
                 readOnly: true,
               }}
             value={landmark.name}
-            onChange={(e) => setLandmarkCard(e.target.value)}
            />
             <TextField
             disabled
             multiline
             label="Landmark Name"
             type="text"
-            id="name"
+            id="description"
             InputProps={{
                 readOnly: true,
               }}
             value={landmark.description}
-            onChange={(e) => setLandmarkCard(e.target.value)}
             />
             </CardContent>
             </React.Fragment>

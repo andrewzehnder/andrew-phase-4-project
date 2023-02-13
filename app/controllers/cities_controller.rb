@@ -2,6 +2,11 @@ class CitiesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity
     before_action :authorize
 
+    def index
+        city = City.all
+        render json: city
+    end
+
     private
 
     def authorize

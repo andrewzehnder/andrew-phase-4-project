@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import './App.css';
 import LogIn from './components/Login';
 import Landmarks from './components/Landmarks';
+import Cities from './components/Cities';
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
     fetch("/me")
     .then ((resp) => resp.json())
     .then ((user) => setUser(user))
-}, []);
+  }, []);
  
   return (
     <Router>
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<Home /> } />
           <Route path="/login" element={<LogIn setUser={ setUser } /> } />
           <Route path="/landmarks" element={<Landmarks user={ user }/> } />
+          <Route path="/cities" element={<Cities user={ user }/> } />
         </Routes>
      </Router>
   );
