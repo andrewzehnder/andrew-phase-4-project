@@ -15,8 +15,8 @@ const NavBar = ({ user, setUser }) => {
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((resp) => {
       if (resp.ok) {
+        navigate ('/login');
         setUser(null);
-        navigate ('/');
       }
     });
   }

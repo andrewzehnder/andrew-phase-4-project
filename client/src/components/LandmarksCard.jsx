@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -11,19 +11,13 @@ import Alert from '@mui/material/Alert';
 const LandmarksCard = ( { landmark, user, handleUpdateLandmark, handleDeleteLandmark } ) => {
 
     const[landmarkCard, setLandmarkCard] = useState({
-        user_id: "",
-        city_id: "",
-        name: "",
-        description:"",
-        image_url: ""
+        user_id: landmark.user_id,
+        city_id: landmark.city_id,
+        name: landmark.name,
+        description: landmark.description,
+        image_url: landmark.image_url
     })
     const [errors, setErrors] = useState([]);
-
-    useEffect(() => {
-        fetch(`/landmarks/${landmark.id}`)
-        .then ((resp) => resp.json())
-        .then ((item) => setLandmarkCard(item))
-      }, []);
 
     const handleSubmit = e => {
         e.preventDefault();

@@ -3,7 +3,7 @@ import LoginForm from './LoginForm';
 import SignUp from './SignUp';
 
 function LogIn({ setUser }) {
-  const [showLoginForm, setShowLoginForm] = useState(true);
+  const [showLoginForm, setShowLoginForm] = useState("true");
 
   return (
     <div>
