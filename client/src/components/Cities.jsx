@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import CitiesCard from './CitiesCard';
+import Box from '@mui/material/Box';
 
-const Cities = ({ user }) => {
+const Cities = ({ user, userCities }) => {
 
-console.log(user)
-const[userCities, setUserCities] = useState([])
-
-useEffect(() => {
-    fetch(`/cities`)
-    .then ((resp) => resp.json())
-    .then ((city) => console.log(city))
-  }, []);
+console.log(userCities)
 
   return (
-    <div>Cities</div>
+    <Box>
+    <h2>My Cities</h2>
+    {userCities ?
+      <ul>{ userCities.map(city => <CitiesCard key={ city.id } city={ city }/>) }</ul> :
+      <h3>No Cities Found</h3> //why is this not showing?
+    }
+    </Box>
   )
 }
 

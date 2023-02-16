@@ -23,9 +23,13 @@ class LandmarksController < ApplicationController
 
     def update
         landmark = Landmark.find(params[:id])
-        byebug
         landmark.update(landmark_params)
         render json: landmark
+    end
+
+    def destroy
+        landmark = Landmark.find(params[:id])
+        landmark.destroy
     end
 
 private

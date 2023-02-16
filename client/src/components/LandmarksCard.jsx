@@ -6,8 +6,9 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import CardMedia from '@mui/material/CardMedia';
+import Alert from '@mui/material/Alert';
 
-const LandmarksCard = ( { landmark, user } ) => {
+const LandmarksCard = ( { landmark, user, handleUpdateLandmark, handleDeleteLandmark } ) => {
 
     const[landmarkCard, setLandmarkCard] = useState({
         user_id: "",
@@ -17,19 +18,17 @@ const LandmarksCard = ( { landmark, user } ) => {
         image_url: ""
     })
     const [errors, setErrors] = useState([]);
-    const landmark_id_int = parseInt(landmark.id);
-
-    console.log(landmarkCard)
 
     useEffect(() => {
-        fetch(`/landmarks/${landmark_id_int}`)
+        fetch(`/landmarks/${landmark.id}`)
         .then ((resp) => resp.json())
         .then ((item) => setLandmarkCard(item))
       }, []);
 
     const handleSubmit = e => {
         e.preventDefault();
-        fetch(`/landmarks/${landmark_id_int}`, {
+        console.log(landmarkCard)
+        fetch(`/landmarks/${landmark.id}`, {
             method: "PATCH",
             headers: {
                 "Accept": "application/json",
@@ -38,9 +37,7 @@ const LandmarksCard = ( { landmark, user } ) => {
             body: JSON.stringify(landmarkCard)
         }).then ((resp) => {
          if (resp.ok) {
-             resp.json().then(updatedLandmark => {
-               console.log(updatedLandmark)
-            })
+             resp.json().then(handleUpdateLandmark)
          }
          else {
              resp.json().then((error) => setErrors(error.errors));
@@ -48,15 +45,31 @@ const LandmarksCard = ( { landmark, user } ) => {
         })
     }
 
+    const handleDelete = e => {
+        fetch(`/landmarks/${landmark.id}`, {
+            method: "DELETE"
+        }).then ((resp) => {
+            if (resp.ok) {
+                handleDeleteLandmark(landmark)
+            }
+        })
+    }
+
     const handleChange = e => {
         setLandmarkCard({
             ...landmarkCard, 
-            [e.target.name]: e.target.value
+            [e.target.id]: e.target.value
         })
     }
 
     const card = (
         <React.Fragment>
+
+        {errors.length ?
+            <Alert severity="error" key={errors}>{errors}</Alert>
+            : null
+        }
+
           <CardMedia
             component="img"
             alt= {landmark.name}
@@ -73,6 +86,7 @@ const LandmarksCard = ( { landmark, user } ) => {
            />
             <TextField
             multiline
+            style={{ marginTop: '20px' }}
             label="Landmark Name"
             type="text"
             id="description"
@@ -83,6 +97,7 @@ const LandmarksCard = ( { landmark, user } ) => {
 
           <CardActions>
           <Button input type="submit" variant="outlined" onClick={ handleSubmit } >Save Changes</Button>
+          <Button input type="submit" variant="outlined" onClick={ handleDelete } >Delete Landmark</Button>
           </CardActions>
         </React.Fragment>
       );
@@ -109,6 +124,7 @@ const LandmarksCard = ( { landmark, user } ) => {
             <TextField
             disabled
             multiline
+            style={{ marginTop: '20px' }}
             label="Landmark Name"
             type="text"
             id="description"
@@ -123,7 +139,7 @@ const LandmarksCard = ( { landmark, user } ) => {
 
   return (
     <Box component="form" sx={{ minWidth: 275, maxWidth: 400 }}>
-    <Card variant="outlined">{user ? card : disabledCard}</Card>
+    <Card variant="outlined">{user.id === landmark.user_id ? card : disabledCard}</Card>
   </Box>
   )
 }

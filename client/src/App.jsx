@@ -6,16 +6,27 @@ import './App.css';
 import LogIn from './components/Login';
 import Landmarks from './components/Landmarks';
 import Cities from './components/Cities';
+import AddLandmark from './components/AddLandmark';
 
 function App() {
 
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
+  const [userCities, setUserCities] = useState([]);
 
   useEffect(() => {
     fetch("/me")
     .then ((resp) => resp.json())
     .then ((user) => setUser(user))
   }, []);
+
+  useEffect(() => {
+      fetch("/cities")
+      .then ((resp) => {
+        if (resp.ok) {
+            resp.json().then((cities) => setUserCities(cities))
+        }
+  })}, [user]);
+
  
   return (
     <Router>
@@ -24,7 +35,8 @@ function App() {
           <Route path="/" element={<Home /> } />
           <Route path="/login" element={<LogIn setUser={ setUser } /> } />
           <Route path="/landmarks" element={<Landmarks user={ user }/> } />
-          <Route path="/cities" element={<Cities user={ user }/> } />
+          <Route path="/addlandmark" element={<AddLandmark user={ user } userCities = { userCities }/> } />
+          <Route path="/cities" element={<Cities user={ user } userCities = { userCities } /> } />
         </Routes>
      </Router>
   );
