@@ -59,8 +59,6 @@ const AddLandmark = ({ user, userCities }) => {
         [e.target.name]: e.target.value})
     }
 
-    console.log(landmark)
-
   return (
     <div>
       <h1>Add New Landmark</h1>

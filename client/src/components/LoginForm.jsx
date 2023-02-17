@@ -25,14 +25,12 @@ const LoginForm = ({ setUser, setShowLoginForm }) => {
         if (resp.ok) {
             resp.json().then(user => {
               setUser(user);
-              console.log(user);
               navigate ('/');
             })
         } 
         else {
             resp.json().then(error => {
               setErrors(error.error);
-              console.log(error.error);
             });
         }
        })
