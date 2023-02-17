@@ -7,6 +7,7 @@ import LogIn from './components/Login';
 import Landmarks from './components/Landmarks';
 import Cities from './components/Cities';
 import AddLandmark from './components/AddLandmark';
+import AddCity from './components/AddCity';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route path="/landmarks" element={<Landmarks user={ user }/> } />
           <Route path="/addlandmark" element={<AddLandmark user={ user } userCities = { userCities }/> } />
           <Route path="/cities" element={<Cities user={ user } userCities = { userCities } /> } />
+          <Route path="/addcity" element={<AddCity user={ user }/> } />
         </Routes>
      </Router>
   );
