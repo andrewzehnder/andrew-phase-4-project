@@ -8,7 +8,20 @@ class CitiesController < ApplicationController
         render json: cities, status: :created
     end
 
+    def create
+        city = City.create(city_params)
+        if city.valid?
+        render json: city, status: :created
+        else
+        render json: { errors: city.errors.full_messages }, status: :unprocessable_entity
+        end
+    end
+
     private
+
+    def city_params
+        params.permit(:name, :country, :population)
+    end
 
     def authorize
         return render json: { errors: ["Unauthorized"] }, status: :unauthorized unless session.include? :user_id

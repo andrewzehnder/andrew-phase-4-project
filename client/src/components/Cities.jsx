@@ -13,7 +13,7 @@ console.log(userCities)
     <Box>
     <br></br>
     <div style={{float: 'right'}}>
-      <Button input type="submit" variant="outlined" component={ Link } to="/addlandmark">Add New City </Button>
+      <Button input type="submit" variant="outlined" component={ Link } to="/addcity">Add New City </Button>
     </div>
     <h2>My Cities</h2>
     {userCities.length ?
