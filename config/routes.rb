@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  get "/mycities", to: "cities#mycities"
   
   resources :landmarks
   resources :cities, only: [:index, :create]

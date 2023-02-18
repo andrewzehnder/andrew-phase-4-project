@@ -3,7 +3,14 @@ class CitiesController < ApplicationController
     before_action :authorize
 
     def index
-        user = User.find_by(id: session[:user_id])
+        # user = User.find_by(id: session[:user_id])
+        # cities = City.joins(:landmarks).where(landmarks: { user_id: user.id })
+        cities = City.all
+        render json: cities, status: :created
+    end
+
+    def mycities
+        user = User.find_by(id: session[:user_id])    
         cities = City.joins(:landmarks).where(landmarks: { user_id: user.id })
         render json: cities, status: :created
     end

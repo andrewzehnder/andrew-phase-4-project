@@ -12,7 +12,7 @@ import AddCity from './components/AddCity';
 function App() {
 
   const [user, setUser] = useState({});
-  const [userCities, setUserCities] = useState([]);
+  const [allCities, setAllCities] = useState([]);
 
   useEffect(() => {
     fetch("/me")
@@ -24,7 +24,7 @@ function App() {
       fetch("/cities")
       .then ((resp) => {
         if (resp.ok) {
-            resp.json().then((cities) => setUserCities(cities))
+            resp.json().then((cities) => setAllCities(cities))
         }
   })}, [user]);
 
@@ -36,8 +36,8 @@ function App() {
           <Route path="/" element={<Home /> } />
           <Route path="/login" element={<LogIn setUser={ setUser } /> } />
           <Route path="/landmarks" element={<Landmarks user={ user }/> } />
-          <Route path="/addlandmark" element={<AddLandmark user={ user } userCities = { userCities }/> } />
-          <Route path="/cities" element={<Cities user={ user } userCities = { userCities } /> } />
+          <Route path="/addlandmark" element={<AddLandmark user={ user } allCities = { allCities }/> } />
+          <Route path="/cities" element={<Cities user={ user } allCities = { allCities } /> } />
           <Route path="/addcity" element={<AddCity user={ user }/> } />
         </Routes>
      </Router>

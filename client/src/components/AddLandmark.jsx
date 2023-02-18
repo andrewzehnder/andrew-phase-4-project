@@ -8,7 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 
-const AddLandmark = ({ user, userCities }) => {
+const AddLandmark = ({ user, allCities }) => {
 
     const [landmark, setLandmark] = useState({
         user_id: "",
@@ -118,7 +118,7 @@ const AddLandmark = ({ user, userCities }) => {
             label="City"
             onChange={handleCityChange}
         >
-        {userCities.map(city => 
+        {allCities.map(city => 
             <MenuItem key={ city.id } value={ city.id }>{city.name}</MenuItem>)
         }
         </Select>

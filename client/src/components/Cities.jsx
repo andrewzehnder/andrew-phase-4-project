@@ -1,11 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import CitiesCard from './CitiesCard';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
-const Cities = ({ user, userCities }) => {
+const Cities = ({ user }) => {
+  const [userCities, setUserCities] = useState([])
+
+useEffect(() => {
+  fetch("/mycities")
+  .then ((resp) => {
+    if (resp.ok) {
+        resp.json().then((cities) => setUserCities(cities))
+    }
+})}, [user]);
 
 console.log(userCities)
 
