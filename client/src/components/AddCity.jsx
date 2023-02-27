@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-const AddCity = ({ user }) => {
+const AddCity = () => {
 
     const [city, setCity] = useState({
         name: "",
@@ -26,7 +26,7 @@ const AddCity = ({ user }) => {
        })
        .then(resp => resp.json())
        .then(data => {
-           console.log(city)
+           console.log(data)
            navigate(`/cities`);
        }) 
     }

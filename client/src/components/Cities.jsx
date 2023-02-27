@@ -16,8 +16,6 @@ useEffect(() => {
     }
 })}, [user]);
 
-console.log(userCities)
-
   return (
     <Box>
     <br></br>

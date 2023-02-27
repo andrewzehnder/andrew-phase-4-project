@@ -27,7 +27,6 @@ function App() {
             resp.json().then((cities) => setAllCities(cities))
         }
   })}, [user]);
-
  
   return (
     <Router>
@@ -38,7 +37,7 @@ function App() {
           <Route path="/landmarks" element={<Landmarks user={ user }/> } />
           <Route path="/addlandmark" element={<AddLandmark user={ user } allCities = { allCities }/> } />
           <Route path="/cities" element={<Cities user={ user } allCities = { allCities } /> } />
-          <Route path="/addcity" element={<AddCity user={ user }/> } />
+          <Route path="/addcity" element={<AddCity /> } />
         </Routes>
      </Router>
   );
