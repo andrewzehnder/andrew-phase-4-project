@@ -8,7 +8,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 
-const AddLandmark = ({ user, allCities }) => {
+const AddLandmark = ({ user, allCities}) => {
+
+  console.log(allCities)
 
     const [landmark, setLandmark] = useState({
         user_id: "",
@@ -41,7 +43,7 @@ const AddLandmark = ({ user, allCities }) => {
        })
        .then(resp => resp.json())
        .then(data => {
-           console.log(data)
+           console.log(data);
            navigate(`/landmarks`);
        }) 
     }

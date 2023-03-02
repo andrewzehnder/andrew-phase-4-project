@@ -57,13 +57,6 @@ const SignUp = ({ setUser, setShowLoginForm, handleSignupSubmit, signupErrors, s
   navigate ('/login');
 }
 
-// const handleSubmit = e => {
-//   setUsername(newUser.username);
-//   setPassword(newUser.password);
-//   handleUserCreate(e);
-//   handleSessionSubmit(e);
-// }
-
  return (
    <div>
 

@@ -24,6 +24,23 @@ class CitiesController < ApplicationController
         end
     end
 
+    def mostlandmarks
+        #I want to get the city with the most amount of landmarks associated
+        #Get all cities
+        cities = City.all
+        #Grab the first city and get the count of the landmarks associated
+        # city = City.joins(:landmarks).group(cities.id).order("count(landmarks.id)")
+        max_city = nil
+        highest_landmarks = 0
+        cities.each do |city|
+            if city.landmarks.count > highest_landmarks
+                max_city = city
+                highest_landmarks = city.landmarks.count
+            end   
+        end
+        render json: city
+    end
+
     private
 
     def city_params

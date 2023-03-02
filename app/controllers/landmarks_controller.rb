@@ -32,6 +32,7 @@ class LandmarksController < ApplicationController
         landmark.destroy
     end
 
+
 private
 
     def landmark_params

@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-const AddCity = () => {
+const AddCity = ({ handleAddCity }) => {
 
     const [city, setCity] = useState({
         name: "",
@@ -26,7 +26,7 @@ const AddCity = () => {
        })
        .then(resp => resp.json())
        .then(data => {
-           console.log(data)
+           handleAddCity(data);
            navigate(`/cities`);
        }) 
     }
