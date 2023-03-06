@@ -32,6 +32,14 @@ class LandmarksController < ApplicationController
         landmark.destroy
     end
 
+    def landmarkscitypopulation
+        #Get my landmarks that have a city population over 10,000
+        landmarks = Landmark.all
+        selected_landmarks = landmarks.filter do |landmark|
+            landmark.city.population >= 10000
+        end
+        render json: selected_landmarks
+    end
 
 private
 

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/mycities", to: "cities#mycities"
-  get "/mostlandmarks", to: "cities#mostlandmarks"
+  get "/landmarkscitypopulation", to: "landmarks#landmarkscitypopulation"
+
   
   resources :landmarks
   resources :cities, only: [:index, :create]

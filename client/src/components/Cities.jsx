@@ -23,7 +23,7 @@ useEffect(() => {
       <Button input type="submit" variant="outlined" component={ Link } to="/addcity">Add New City </Button>
     </div>
     <h2>My Cities</h2>
-    {userCities.length > 1 ?
+    {userCities.length >= 1 ?
       <ul>{ userCities.map(city => <CitiesCard key={ city.id } city={ city }/>) }</ul> :
       <Typography variant="h7" >No Cities Found</Typography>
     }
