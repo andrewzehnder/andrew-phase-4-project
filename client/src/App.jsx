@@ -32,8 +32,6 @@ function App() {
     setAllCities([...allCities, newCity])
   }
 
-
-
   // const handleAddUserCity = addedLandmark => {
   //   console.log("handleAddUserCity", addedLandmark)
   //   const city = allCities.find(city => city.id === addedLandmark.city_id)

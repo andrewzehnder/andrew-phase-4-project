@@ -81,7 +81,7 @@ const LandmarksCard = ( { landmark, user, handleUpdateLandmark, handleDeleteLand
             <TextField
             multiline
             style={{ marginTop: '20px' }}
-            label="Landmark Name"
+            label="Landmark Description"
             type="text"
             id="description"
             defaultValue={landmark.description}
@@ -119,7 +119,7 @@ const LandmarksCard = ( { landmark, user, handleUpdateLandmark, handleDeleteLand
             disabled
             multiline
             style={{ marginTop: '20px' }}
-            label="Landmark Name"
+            label="Landmark Description"
             type="text"
             id="description"
             InputProps={{

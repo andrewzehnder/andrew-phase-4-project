@@ -11,7 +11,8 @@ class CitiesController < ApplicationController
 
     def mycities
         user = User.find_by(id: session[:user_id])    
-        cities = City.joins(:landmarks).where(landmarks: { user_id: user.id })
+        # cities = City.joins(:landmarks).where(landmarks: { user_id: user.id })
+        cities = user.cities.uniq
         render json: cities, status: :created
     end
 
@@ -23,6 +24,7 @@ class CitiesController < ApplicationController
         render json: { errors: city.errors.full_messages }, status: :unprocessable_entity
         end
     end
+
 
     private
 
